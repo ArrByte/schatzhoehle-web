@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>aMAZING</title>
+  <style>
+  body {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #lobby, #game {
+    margin-bottom: 4em;
+  }
+  footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+  }
+
+  @media screen and (orientation:portrait) {
+    canvas {
+      width: 100%;
+    }
+  }
+
+  @media screen and (orientation:landscape) {
+    canvas {
+      width: 500px;
+    }
+  }
+
+  .hide { display: none; }
+  .show { display: block; }
+  .block {
+    display: inline-block;
+    width: 15em;
+    height: 2em;
+    line-height: 2em;
+    margin-bottom: 2em;
+  }
+  .smallprint {
+    font-size: 0.75em;
+  }
+
+  #logo {
+    width: 90%;
+  }
+  </style>
+</head>
+<body>
+  <template id="step2-new">
+    <p>Deine Spiel-ID ist <strong><span id="gameID"></span></strong></p>
+    <p>Warte auf den anderen Spieler...</p>
+  </template>
+
+  <template id="step2-join">
+    <p>Welcher Runde soll beigetreten werden?</p>
+    <div><label for="gameID">Spiel-ID:</label> <input id="gameID" style="width: 8em"></div>
+    <div><button id="join" class="block">Los</button></div>
+  </template>
+
+  <template id="gameover">
+    <h1>Game over!</h1>
+    <p>Ihr habt <span id="score"></span> Punkte gesammelt</p>
+    <div>
+      <button class="block" onclick="window.location.reload()">Zum Hauptmenü</button>
+    </div>
+  </template>
+
+  <div id="lobby">
+    <div id="lobby-step1" class="show">
+      <h1><img id="logo" src="img/logo.png" alt="Schatzhoehle"></h1>
+      <div><button class="block" id="newGame">Neue Runde</button></div>
+      <div><button class="block" id="joinGame">Runde beitreten</button></div>
+    </div>
+
+    <div class="hide" id="lobby-step2"></div>
+  </div>
+
+  <div id="game" class="hide">
+    <div>Leben: <span id="lifes">3</span>&nbsp;Juwelen: <span id="score">0</span></div>
+    <canvas width="500" height="500"></canvas>
+  </div>
+
+  <footer>
+    Spiel von: Anne, Dustin &amp; Martin Splitt. &copy; 2016.
+    <div class="smallprint">
+      Gems CC-BY 3.0 by Ville Seppanen.
+      Hero by <a href="http://opengameart.org/users/skylar1146" target="_blank">Skylar1146</a>.
+      Enemies CC-BY-SA 3.0 by <a href="http://opengameart.org/users/jerom" target="_blank">Jerom</a>.
+    </div>
+  </footer>
+  <script src="js/gfx.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/lobby.js"></script>
+</body>
+</html>
